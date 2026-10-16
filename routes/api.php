@@ -1,7 +1,19 @@
 <?php
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
+use App\Http\Controllers\Api\V1\Auth\SocialAuthController;
 use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| ApusFly API - Version 1
+|--------------------------------------------------------------------------
+|
+| Authentication: Laravel Sanctum
+| Clients: Next.js Web and React Native Mobile
+| Authorization: RBAC and Laravel Policies
+|
+*/
 
 Route::prefix('v1')->group(function () {
 
@@ -13,20 +25,23 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('auth')->group(function () {
 
+        // Email/password registration
         Route::post('/register', [
             AuthController::class,
             'register',
         ])->middleware('throttle:5,1');
 
+        // Shared email/password login
         Route::post('/login', [
             AuthController::class,
-            'webLogin',
+            'login',
         ])->middleware('throttle:5,1');
 
-        Route::post('/mobile/login', [
-            AuthController::class,
-            'mobileLogin',
-        ])->middleware('throttle:5,1');
+        // Google social authentication
+        Route::post('/google', [
+            SocialAuthController::class,
+            'googleLogin',
+        ])->middleware('throttle:10,1');
     });
 
     /*
@@ -57,6 +72,9 @@ Route::prefix('v1')->group(function () {
         |--------------------------------------------------------------------------
         | Temporary RBAC Test Routes
         |--------------------------------------------------------------------------
+        |
+        | Available only during automated testing.
+        |
         */
 
         if (app()->environment('testing')) {

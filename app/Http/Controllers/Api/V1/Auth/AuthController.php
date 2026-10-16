@@ -9,7 +9,7 @@ use App\Http\Resources\UserResource;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthController extends BaseController
 {
@@ -18,6 +18,9 @@ class AuthController extends BaseController
     ) {
     }
 
+    /**
+     * Register a new user account.
+     */
     public function register(RegisterRequest $request): JsonResponse
     {
         $user = $this->authService->register(
@@ -25,40 +28,27 @@ class AuthController extends BaseController
         );
 
         return $this->created(
-            new UserResource($user->load('roles.permissions')),
+            new UserResource(
+                $user->load('roles.permissions')
+            ),
             'Account registered successfully.'
         );
     }
 
-    // Next.js: stateful cookie-based authentication.
-    public function webLogin(LoginRequest $request): JsonResponse
-    {
-        $user = $this->authService->authenticate(
-            $request->validated()
-        );
-
-        Auth::guard('web')->login($user);
-
-        $request->session()->regenerate();
-
-        $this->authService->recordLogin($user);
-
-        return $this->success(
-            new UserResource($user->load('roles.permissions')),
-            'Login successful.'
-        );
-    }
-
-    // React Native: bearer-token authentication.
-    public function mobileLogin(LoginRequest $request): JsonResponse
+    /**
+     * Authenticate a user and issue a Sanctum Bearer token.
+     *
+     * Used by both Next.js and React Native.
+     */
+    public function login(LoginRequest $request): JsonResponse
     {
         $user = $this->authService->authenticate(
             $request->validated()
         );
 
         $token = $user->createToken(
-            'apusfly-mobile',
-            ['mobile']
+            'apusfly-client',
+            ['access']
         )->plainTextToken;
 
         $this->authService->recordLogin($user);
@@ -72,6 +62,9 @@ class AuthController extends BaseController
         ], 'Login successful.');
     }
 
+    /**
+     * Retrieve the currently authenticated user.
+     */
     public function me(Request $request): JsonResponse
     {
         return $this->success(
@@ -82,16 +75,15 @@ class AuthController extends BaseController
         );
     }
 
+    /**
+     * Revoke the current Sanctum Bearer token.
+     */
     public function logout(Request $request): JsonResponse
     {
         $token = $request->user()->currentAccessToken();
 
-        if ($token instanceof \Laravel\Sanctum\PersonalAccessToken) {
+        if ($token instanceof PersonalAccessToken) {
             $token->delete();
-        } else {
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
         }
 
         return $this->success(

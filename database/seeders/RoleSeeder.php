@@ -10,69 +10,113 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-            // Platform Administration
-            'super_admin' => [
-                'Super Admin',
-                'platform',
-            ],
-            'system_admin' => [
-                'System Admin',
-                'platform',
-            ],
-            'operations_manager' => [
-                'Operations Manager',
-                'platform',
-            ],
-            'customer_support' => [
-                'Customer Support Agent',
-                'platform',
-            ],
-            'finance_accounting' => [
-                'Finance / Accounting',
-                'platform',
+            // Platform administration
+            [
+                'name' => 'super_admin',
+                'scope' => 'platform',
+                'description' => 'Full platform administration.'
             ],
 
-            // Individual Users
-            'customer' => [
-                'Individual Customer',
-                'platform',
-            ],
-            'pilot' => [
-                'Independent Pilot',
-                'platform',
+            [
+                'name' => 'system_admin',
+                'scope' => 'platform',
+                'description' => 'Manages platform users and configurations.'
             ],
 
-            // Provider Organization
-            'provider_owner' => [
-                'Provider Owner',
-                'provider',
-            ],
-            'provider_manager' => [
-                'Provider Manager',
-                'provider',
-            ],
-            'provider_staff' => [
-                'Provider Staff',
-                'provider',
+            [
+                'name' => 'operations_manager',
+                'scope' => 'platform',
+                'description' => 'Oversees bookings and service operations.'
             ],
 
-            // Client Organizations
-            'enterprise_client' => [
-                'Enterprise Client',
-                'organization',
+            [
+                'name' => 'customer_support',
+                'scope' => 'platform',
+                'description' => 'Handles customer inquiries and support tickets.'
             ],
-            'government_lgu' => [
-                'Government / LGU',
-                'organization',
+
+            [
+                'name' => 'finance_accounting',
+                'scope' => 'platform',
+                'description' => 'Manages payments, settlements, and financial reports.'
+            ],
+
+            [
+                'name' => 'sales_business_development',
+                'scope' => 'platform',
+                'description' => 'Manages sales leads and partnerships.'
+            ],
+
+            [
+                'name' => 'marketing_manager',
+                'scope' => 'platform',
+                'description' => 'Manages campaigns and promotional content.'
+            ],
+
+            [
+                'name' => 'auditor',
+                'scope' => 'platform',
+                'description' => 'Reviews audit records and compliance reports.'
+            ],
+
+            [
+                'name' => 'technical_support',
+                'scope' => 'platform',
+                'description' => 'Investigates technical incidents and platform issues.'
+            ],
+
+            // Mobile application users
+            [
+                'name' => 'customer',
+                'scope' => 'platform',
+                'description' => 'Books and manages drone services.'
+            ],
+
+            [
+                'name' => 'pilot',
+                'scope' => 'platform',
+                'description' => 'Performs assigned drone service operations.'
+            ],
+
+            // Provider organization roles
+            [
+                'name' => 'provider_owner',
+                'scope' => 'provider',
+                'description' => 'Owns and manages a drone service provider.'
+            ],
+
+            [
+                'name' => 'provider_manager',
+                'scope' => 'provider',
+                'description' => 'Manages provider bookings, pilots, and drones.'
+            ],
+
+            [
+                'name' => 'provider_staff',
+                'scope' => 'provider',
+                'description' => 'Supports provider scheduling and operations.'
+            ],
+
+            // Enterprise and government organization roles
+            [
+                'name' => 'enterprise_client',
+                'scope' => 'organization',
+                'description' => 'Manages enterprise drone service requests.'
+            ],
+
+            [
+                'name' => 'government_lgu',
+                'scope' => 'organization',
+                'description' => 'Manages government drone service requests.'
             ],
         ];
 
-        foreach ($roles as $name => [$description, $scope]) {
+        foreach ($roles as $role) {
             Role::updateOrCreate(
-                ['name' => $name],
+                ['name' => $role['name']],
                 [
-                    'description' => $description,
-                    'scope' => $scope,
+                    'scope' => $role['scope'],
+                    'description' => $role['description'],
                 ]
             );
         }
