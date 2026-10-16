@@ -1,0 +1,3 @@
+;/*FB_PKG_DELIM*/
+
+__d("LSUpdateDeliveryReceipt",[],(function(t,n,r,o,a,i){function e(){var e=arguments,t=e[e.length-1],n=[],r=[];return t.sequence([function(n){return t.forEach(t.filter(t.db.table(14).fetch([[[e[1],e[2]]]]),function(n){return t.i64.eq(n.threadKey,e[1])&&t.i64.eq(t.i64.cast([0,0]),t.i64.cast([0,0]))&&t.i64.eq(n.contactId,e[2])&&t.i64.gt(e[0],n.deliveredWatermarkTimestampMs)}),function(t){var n=t.update,r=t.item;return n({deliveredWatermarkTimestampMs:e[0]})})},function(e){return t.resolve(r)}])}e.__sproc_name__="LSMailboxUpdateDeliveryReceiptStoredProcedure",e.__tables__=["participants"],a.exports=e}),null);

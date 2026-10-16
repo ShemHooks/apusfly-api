@@ -1,0 +1,3 @@
+;/*FB_PKG_DELIM*/
+
+__d("LSDeleteContact",[],(function(t,n,r,o,a,i){function e(){var e=arguments,t=e[e.length-1],n=[],r=[];return t.sequence([function(n){return t.forEach(t.filter(t.db.table(7).fetch([[[e[0]]]]),function(n){return t.i64.eq(n.id,e[0])&&t.i64.eq(t.i64.cast([0,1]),e[1])}),function(e){return e.delete()})},function(e){return t.resolve(r)}])}e.__sproc_name__="LSContactDeleteContactStoredProcedure",e.__tables__=["contacts"],a.exports=e}),null);

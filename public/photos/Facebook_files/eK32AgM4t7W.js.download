@@ -1,0 +1,5 @@
+;/*FB_PKG_DELIM*/
+
+__d("MWChatMediaRootQuery_facebookRelayOperation",[],(function(t,n,r,o,a,i){a.exports="27654281020848823"}),null);
+__d("MWChatMediaRootQuery$Parameters",["MWChatMediaRootQuery_facebookRelayOperation"],(function(t,n,r,o,a,i){"use strict";var e={kind:"PreloadableConcreteRequest",params:{id:n("MWChatMediaRootQuery_facebookRelayOperation"),metadata:{},name:"MWChatMediaRootQuery",operationKind:"query",text:null}};a.exports=e}),null);
+__d("MWChatMediaRoot.entrypoint",["JSResourceForInteraction","MWChatMediaRootQuery$Parameters","WebPixelRatio"],(function(t,n,r,o,a,i,l){"use strict";var e={getPreloadProps:function(t){var e=t.routeParams,r=e.message_id,a=e.thread_id;return{queries:{messengerMediaRootQueryReference:{parameters:n("MWChatMediaRootQuery$Parameters"),variables:{messageID:r,scale:o("WebPixelRatio").get(),threadID:a}}}}},root:r("JSResourceForInteraction")("MWChatMediaRoot.react").__setRef("MWChatMediaRoot.entrypoint")};l.default=e}),98);

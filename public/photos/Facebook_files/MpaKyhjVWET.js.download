@@ -1,0 +1,4 @@
+;/*FB_PKG_DELIM*/
+
+__d("LSDeleteThenInsertAttachmentConversion",[],(function(t,n,r,o,a,i){function e(){var e=arguments,t=e[e.length-1],n=[],r=[];return t.sequence([function(n){return t.db.table(164).put({attachmentFbid:e[0],threadKey:e[1],pdfConversionStatus:e[4],openableUrl:e[2],openableUrlExpirationTimestampMs:e[3]})},function(e){return t.resolve(r)}])}e.__sproc_name__="LSMailboxDeleteThenInsertAttachmentConversionStoredProcedure",e.__tables__=["attachment_conversion"],a.exports=e}),null);
+__d("LSUpdatePreviewUrl",[],(function(t,n,r,o,a,i){function e(){var e=arguments,t=e[e.length-1],n=[],r=[];return t.resolve(r)}e.__sproc_name__="LSMailboxUpdatePreviewUrlStoredProcedure",e.__tables__=[],a.exports=e}),null);

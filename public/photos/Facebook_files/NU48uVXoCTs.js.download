@@ -1,0 +1,8 @@
+;/*FB_PKG_DELIM*/
+
+__d("MessengerWellbeingRestrictFailedFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(t,n,r,o,a,i,l){"use strict";var e=r("getFalcoLogPolicy_DO_NOT_USE")("474"),s=o("FalcoLoggerInternal").create("messenger_wellbeing_restrict_failed",e),u=s;l.default=u}),98);
+__d("MessengerWellbeingRestrictSucceededFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(t,n,r,o,a,i,l){"use strict";var e=r("getFalcoLogPolicy_DO_NOT_USE")("480"),s=o("FalcoLoggerInternal").create("messenger_wellbeing_restrict_succeeded",e),u=s;l.default=u}),98);
+__d("MessengerWellbeingRestrictTappedFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(t,n,r,o,a,i,l){"use strict";var e=r("getFalcoLogPolicy_DO_NOT_USE")("481"),s=o("FalcoLoggerInternal").create("messenger_wellbeing_restrict_tapped",e),u=s;l.default=u}),98);
+__d("MessengerWellbeingUnrestrictFailedFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(t,n,r,o,a,i,l){"use strict";var e=r("getFalcoLogPolicy_DO_NOT_USE")("482"),s=o("FalcoLoggerInternal").create("messenger_wellbeing_unrestrict_failed",e),u=s;l.default=u}),98);
+__d("MessengerWellbeingUnrestrictSucceededFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(t,n,r,o,a,i,l){"use strict";var e=r("getFalcoLogPolicy_DO_NOT_USE")("483"),s=o("FalcoLoggerInternal").create("messenger_wellbeing_unrestrict_succeeded",e),u=s;l.default=u}),98);
+__d("MessengerWellbeingUnrestrictTappedFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(t,n,r,o,a,i,l){"use strict";var e=r("getFalcoLogPolicy_DO_NOT_USE")("484"),s=o("FalcoLoggerInternal").create("messenger_wellbeing_unrestrict_tapped",e),u=s;l.default=u}),98);
